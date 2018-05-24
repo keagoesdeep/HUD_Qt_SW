@@ -214,6 +214,19 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="imgRecognition">
+    <property name="geometry">
+     <rect>
+      <x>976</x>
+      <y>400</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>img recognition</string>
+    </property>
+   </widget>
    <zorder>controlsBrowser</zorder>
    <zorder>verticalLayoutWidget</zorder>
    <zorder>verticalLayoutWidget_2</zorder>
@@ -221,6 +234,7 @@ p, li { white-space: pre-wrap; }
    <zorder>console</zorder>
    <zorder>checkBox</zorder>
    <zorder>verticalLayoutWidget_4</zorder>
+   <zorder>imgRecognition</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

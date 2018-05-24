@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     player0 = new Player;
     player0->setPipelineDescription(pipeDescr0);
-    player0->createPipeline();
+//    player0->createPipeline();
     player0->play();
     ui->videoLayout->addWidget(player0, 0, 0);
     ui->videoLayout->addWidget(second, 0, 0);
@@ -180,6 +180,23 @@ void MainWindow::updateLabels()
 
 void MainWindow::msgReceived(QString message){
     ui->console->append(message);
+        if(message.left(2) == "TR"){
+        QString color = message.mid(2, 1);
+        QString shape = message.mid(3, 1);
+        if(color == "Y") ui->imgRecognition->setStyleSheet("QLabel { background-color : black; color : yellow; qproperty-alignment: AlignCenter; font-size: 32px; font: bold;}");
+        if(color == "B") ui->imgRecognition->setStyleSheet("QLabel { background-color : black; color : blue; qproperty-alignment: AlignCenter; font-size: 32px; font: bold; }");
+        if(color == "R") ui->imgRecognition->setStyleSheet("QLabel { background-color : black; color : red; qproperty-alignment: AlignCenter; font-size: 32px; font: bold; }");
+        if(shape == "T") {
+            if (color == 'Y') ui->imgRecognition->setText("B");
+            if (color == 'R') ui->imgRecognition->setText("A");
+            if (color == 'B') ui->imgRecognition->setText("C");
+        }
+        if(shape == "R") {
+            if (color == 'R') ui->imgRecognition->setText("D");
+            if (color == 'Y') ui->imgRecognition->setText("E");
+            if (color == 'B') ui->imgRecognition->setText("F");
+        }
+    }
 }
 void MainWindow::zmenaReceived(QString message){
     monitor->send(message);

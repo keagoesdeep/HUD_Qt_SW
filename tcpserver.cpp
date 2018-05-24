@@ -27,7 +27,8 @@ void TcpServer::msgReceived()
     {
         QString switchResult = "$$DEFAULT$$";
         QString receivedMessage = socket->readAll();
-        if(receivedMessage.length() > 2 && receivedMessage.left(1)=="E"){
+
+       if(receivedMessage.length() > 2 && receivedMessage.left(1)=="E"){
             int errorNumber = receivedMessage.right(receivedMessage.length() - 2).toInt();
             switch (errorNumber){
                 case 0: switchResult = "everything fine"; break;
@@ -39,6 +40,10 @@ void TcpServer::msgReceived()
                 case 6: switchResult = "#"; break;
             }
         }
+        else// TRYT
+            if(receivedMessage.length() > 3 && receivedMessage.startsWith("TR")) {
+                switchResult = receivedMessage;
+            }
         else
             receivedMessage = "wat iz dis";
         Q_EMIT msg(switchResult);
